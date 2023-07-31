@@ -1,5 +1,5 @@
 import { formatDate, findDates, nextId } from '../utils.js'
-import { createTableRow } from './row-builder.js'
+import { createTableRow, assignIcon } from './row-builder.js'
 import { addNote, getAllNotes, getNoteById, editNote } from '../services/note-service.js'
 import { archiveNumber } from './archive-calculator.js'
 
@@ -58,21 +58,7 @@ function updateTableRow(note) {
 		"fa-quote-left"
 	)
 
-	switch (note.category) {
-		case "Task":
-			categoryIcon.classList.add("fa", "fa-calendar-check-o")
-			break
-		case "Random Thought":
-			categoryIcon.classList.add("fa", "fa-comment")
-			break
-		case "Idea":
-			categoryIcon.classList.add("fa", "fa-lightbulb-o")
-			break
-		case "Quote":
-			categoryIcon.classList.add("fa", "fa-quote-left")
-			break
-
-	}
+	assignIcon(note, categoryIcon)
 
 	cells[1].textContent = note.name
 	cells[2].textContent = note.created

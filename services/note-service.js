@@ -86,7 +86,7 @@ function addNote(note) {
 // Function to edit an existing note in the notes list.
 function editNote(note) {
 	try {
-		const i = notes.findIndex((n) => n.id === Number(note.id))
+		const i = notes.findIndex(n => n.id === Number(note.id))
 		if (i >= 0) {
 			notes[i] = { ...notes[i], ...note }
 		} else {
@@ -100,7 +100,7 @@ function editNote(note) {
 // Function to delete a note by its ID from the notes list.
 function deleteNote(id) {
 	try {
-		notes = notes.filter((n) => n.id !== id)
+		notes = notes.filter(n => n.id !== id)
 	} catch (error) {
 		console.error("Error occurred while deleting a note:", error)
 	}
