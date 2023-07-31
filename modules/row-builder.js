@@ -6,7 +6,7 @@ import { editForm } from './edit-form.js'
 import { archiveRow } from './archive.js'
 import { archiveNumber } from './archive-calculator.js'
 
-export function createTableRow(note) {
+function createTableRow(note) {
 	const tableBody = document.querySelector(".notes-table tbody")
 	
 	const newRow = tableBody.insertRow()
@@ -17,20 +17,8 @@ export function createTableRow(note) {
 
 	const iconCell = newRow.insertCell()
 	const categoryIcon = document.createElement("i")
-
-	const categoryIconClasses = {
-		"Task": "fa-calendar-check-o",
-		"Random Thought": "fa-comment",
-		"Idea": "fa-lightbulb-o",
-		"Quote": "fa-quote-left"
-    	}
-
-	const iconClass = categoryIconClasses[note.category]
+	const iconClass = assignIcon(note, categoryIcon)
 	
-	if (iconClass) {
-		categoryIcon.classList.add("fa", iconClass)
-	}
-
 	iconCell.appendChild(categoryIcon)
 
 	for (const key of keys) {
@@ -76,3 +64,26 @@ export function createTableRow(note) {
 	})
 	archiveCell.appendChild(archiveButton)
 }
+
+
+function assignIcon(note, categoryIcon) {
+    switch (note.category) {
+        case "Task":
+            categoryIcon.classList.add("fa", "fa-calendar-check-o");
+            break;
+        case "Random Thought":
+            categoryIcon.classList.add("fa", "fa-comment");
+            break;
+        case "Idea":
+            categoryIcon.classList.add("fa", "fa-lightbulb-o");
+            break;
+        case "Quote":
+            categoryIcon.classList.add("fa", "fa-quote-left");
+            break;
+    }
+
+    return categoryIcon;
+}
+
+
+export { createTableRow, assignIcon}
