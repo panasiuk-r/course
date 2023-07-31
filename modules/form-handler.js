@@ -32,11 +32,11 @@ export function formHandler(event, form) {
 	if (idInput) {
 		editNote(note)
 		updateTableRow(note)
-		document.querySelector("#formPopup").style.display = "none"
 	} else {
 		note.archive = false
 		addNote(note)
  		createTableRow(note)
+		document.querySelector("#formPopup").style.display = "none"
 		archiveNumber()
 	}
 }
