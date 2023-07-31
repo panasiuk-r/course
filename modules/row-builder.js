@@ -18,20 +18,17 @@ export function createTableRow(note) {
 	const iconCell = newRow.insertCell()
 	const categoryIcon = document.createElement("i")
 
-	switch (note.category) {
-		case "Task":
-			categoryIcon.classList.add("fa", "fa-calendar-check-o")
-			break
-		case "Random Thought":
-			categoryIcon.classList.add("fa", "fa-comment")
-			break
-		case "Idea":
-			categoryIcon.classList.add("fa", "fa-lightbulb-o")
-			break
-		case "Quote":
-			categoryIcon.classList.add("fa", "fa-quote-left")
-                        break
+	const categoryIconClasses = {
+		"Task": "fa-calendar-check-o",
+		"Random Thought": "fa-comment",
+		"Idea": "fa-lightbulb-o",
+		"Quote": "fa-quote-left"
+    	}
 
+	const iconClass = categoryIconClasses[note.category]
+	
+	if (iconClass) {
+		categoryIcon.classList.add("fa", iconClass)
 	}
 
 	iconCell.appendChild(categoryIcon)
