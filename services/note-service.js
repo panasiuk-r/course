@@ -1,4 +1,4 @@
-const notes = [
+let notes = [
 	{
 		id: 1,
 		name: "Note 1",
